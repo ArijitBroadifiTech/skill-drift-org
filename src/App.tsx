@@ -1,15 +1,12 @@
-import './App.css'
-import Odd from './modules/Odd'
-import Test from './modules/Test'
+import { Button } from '@/components/ui/button';
 
 function App() {
   return (
-    <div className='w-full h-full min-h-screen bg-black'>
-      <p className='text-red-300 bg-black'>Hi there</p>
-      <Test />
-      <Odd />
+    <div className='flex min-h-svh flex-col items-center justify-center'>
+      <Button>Click me</Button>
+      <div className='bg-red-200'>Hi there</div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
