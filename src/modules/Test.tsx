@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@/components/ui/card'
 
 function Test() {
   return (
@@ -25,7 +25,7 @@ function Test() {
         </CardFooter>
       </Card>
     </>
-  );
+  )
 }
 
-export default Test;
+export default Test
