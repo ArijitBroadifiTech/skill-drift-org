@@ -1,7 +1,7 @@
 function Odd() {
   return (
     <div className='bg-white'>
-      <p>vhcfvlhjds</p>
+      <p>Odd Here</p>
     </div>
   );
 }
