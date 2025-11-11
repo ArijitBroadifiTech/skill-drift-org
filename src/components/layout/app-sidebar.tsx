@@ -14,7 +14,7 @@ import {
 // Menu items.
 const items = [
   {
-    title: 'Home',
+    title: 'Dashboard',
     url: '#',
     icon: Home,
   },
@@ -45,7 +45,9 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Skill Drift Administration</SidebarGroupLabel>
+          <SidebarGroupLabel className='text-lg text-blue-700 font-bold'>
+            Skill Drift Administration
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map(item => (
