@@ -1,4 +1,5 @@
-import { Calendar, Home, Inbox, Settings } from 'lucide-react';
+import { Home, Settings, Users, Image, MessageCircle } from 'lucide-react';
+import { IconUserQuestion } from '@tabler/icons-react';
 
 import {
   Sidebar,
@@ -19,14 +20,24 @@ const items = [
     icon: Home,
   },
   {
+    title: 'Users',
+    url: '/users',
+    icon: Users,
+  },
+  {
     title: 'Blogs',
     url: '/blogs',
-    icon: Inbox,
+    icon: Image,
   },
   {
     title: 'Chats',
     url: '/chats',
-    icon: Calendar,
+    icon: MessageCircle,
+  },
+  {
+    title: 'FAQ',
+    url: '/faq',
+    icon: IconUserQuestion,
   },
   {
     title: 'Settings',

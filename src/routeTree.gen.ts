@@ -8,137 +8,175 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
-import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
-import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
-import { Route as AuthenticatedBlogsIndexRouteImport } from './routes/_authenticated/blogs/index'
+import { Route as rootRouteImport } from './routes/__root';
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route';
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index';
+import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index';
+import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index';
+import { Route as AuthenticatedFaqIndexRouteImport } from './routes/_authenticated/faq/index';
+import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index';
+import { Route as AuthenticatedBlogsIndexRouteImport } from './routes/_authenticated/blogs/index';
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
+} as any);
+const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any);
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
     id: '/settings/',
     path: '/settings/',
     getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
+  } as any);
+const AuthenticatedFaqIndexRoute = AuthenticatedFaqIndexRouteImport.update({
+  id: '/faq/',
+  path: '/faq/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any);
 const AuthenticatedChatsIndexRoute = AuthenticatedChatsIndexRouteImport.update({
   id: '/chats/',
   path: '/chats/',
   getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
+} as any);
 const AuthenticatedBlogsIndexRoute = AuthenticatedBlogsIndexRouteImport.update({
   id: '/blogs/',
   path: '/blogs/',
   getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute
-  '/blogs': typeof AuthenticatedBlogsIndexRoute
-  '/chats': typeof AuthenticatedChatsIndexRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/': typeof AuthenticatedIndexRoute;
+  '/blogs': typeof AuthenticatedBlogsIndexRoute;
+  '/chats': typeof AuthenticatedChatsIndexRoute;
+  '/faq': typeof AuthenticatedFaqIndexRoute;
+  '/settings': typeof AuthenticatedSettingsIndexRoute;
+  '/users': typeof AuthenticatedUsersIndexRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof AuthenticatedIndexRoute
-  '/blogs': typeof AuthenticatedBlogsIndexRoute
-  '/chats': typeof AuthenticatedChatsIndexRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/': typeof AuthenticatedIndexRoute;
+  '/blogs': typeof AuthenticatedBlogsIndexRoute;
+  '/chats': typeof AuthenticatedChatsIndexRoute;
+  '/faq': typeof AuthenticatedFaqIndexRoute;
+  '/settings': typeof AuthenticatedSettingsIndexRoute;
+  '/users': typeof AuthenticatedUsersIndexRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
-  '/_authenticated/': typeof AuthenticatedIndexRoute
-  '/_authenticated/blogs/': typeof AuthenticatedBlogsIndexRoute
-  '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
-  '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  __root__: typeof rootRouteImport;
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren;
+  '/_authenticated/': typeof AuthenticatedIndexRoute;
+  '/_authenticated/blogs/': typeof AuthenticatedBlogsIndexRoute;
+  '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute;
+  '/_authenticated/faq/': typeof AuthenticatedFaqIndexRoute;
+  '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute;
+  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs' | '/chats' | '/settings'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs' | '/chats' | '/settings'
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: '/' | '/blogs' | '/chats' | '/faq' | '/settings' | '/users';
+  fileRoutesByTo: FileRoutesByTo;
+  to: '/' | '/blogs' | '/chats' | '/faq' | '/settings' | '/users';
   id:
     | '__root__'
     | '/_authenticated'
     | '/_authenticated/'
     | '/_authenticated/blogs/'
     | '/_authenticated/chats/'
+    | '/_authenticated/faq/'
     | '/_authenticated/settings/'
-  fileRoutesById: FileRoutesById
+    | '/_authenticated/users/';
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/_authenticated';
+      path: '';
+      fullPath: '';
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/_authenticated/': {
-      id: '/_authenticated/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
+      id: '/_authenticated/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
+    '/_authenticated/users/': {
+      id: '/_authenticated/users/';
+      path: '/users';
+      fullPath: '/users';
+      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/settings/': {
-      id: '/_authenticated/settings/'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
+      id: '/_authenticated/settings/';
+      path: '/settings';
+      fullPath: '/settings';
+      preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
+    '/_authenticated/faq/': {
+      id: '/_authenticated/faq/';
+      path: '/faq';
+      fullPath: '/faq';
+      preLoaderRoute: typeof AuthenticatedFaqIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/chats/': {
-      id: '/_authenticated/chats/'
-      path: '/chats'
-      fullPath: '/chats'
-      preLoaderRoute: typeof AuthenticatedChatsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
+      id: '/_authenticated/chats/';
+      path: '/chats';
+      fullPath: '/chats';
+      preLoaderRoute: typeof AuthenticatedChatsIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/blogs/': {
-      id: '/_authenticated/blogs/'
-      path: '/blogs'
-      fullPath: '/blogs'
-      preLoaderRoute: typeof AuthenticatedBlogsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
+      id: '/_authenticated/blogs/';
+      path: '/blogs';
+      fullPath: '/blogs';
+      preLoaderRoute: typeof AuthenticatedBlogsIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
-  AuthenticatedBlogsIndexRoute: typeof AuthenticatedBlogsIndexRoute
-  AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
-  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute;
+  AuthenticatedBlogsIndexRoute: typeof AuthenticatedBlogsIndexRoute;
+  AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute;
+  AuthenticatedFaqIndexRoute: typeof AuthenticatedFaqIndexRoute;
+  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute;
+  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute;
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedBlogsIndexRoute: AuthenticatedBlogsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
+  AuthenticatedFaqIndexRoute: AuthenticatedFaqIndexRoute,
   AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
-}
+  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+};
 
 const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren);
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
