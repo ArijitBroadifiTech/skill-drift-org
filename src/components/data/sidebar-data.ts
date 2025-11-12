@@ -2,41 +2,41 @@ import {
   IconLayoutDashboard,
   IconUsers,
   IconUserQuestion,
-} from '@tabler/icons-react'
+} from "@tabler/icons-react";
 
-import { Command, Image, UserCog } from 'lucide-react'
-import type { SidebarData } from '../layout/types'
+import { Command, Image, UserCog } from "lucide-react";
+import type { SidebarData } from "../layout/types";
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: "satnaing",
+    email: "satnaingdev@gmail.com",
+    avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
-      name: 'Admin Pannel',
+      name: "Admin Pannel",
       logo: Command,
-      plan: 'Skill Drift',
+      plan: "Skill Drift",
     },
   ],
   navGroups: [
     {
-      title: 'General',
+      title: "General",
       items: [
         {
-          title: 'Dashboard',
-          url: '/',
+          title: "Dashboard",
+          url: "/",
           icon: IconLayoutDashboard,
         },
         {
-          title: 'Users',
-          url: '/users',
+          title: "Users",
+          url: "/users",
           icon: IconUsers,
         },
         {
-          title: 'User Activity',
-          url: '/users',
+          title: "User Activity",
+          url: "/users",
           icon: IconUsers,
         },
         // {
@@ -61,19 +61,19 @@ export const sidebarData: SidebarData = {
         //   ],
         // },
         {
-          title: 'User Actions',
-          url: '/users',
+          title: "User Actions",
+          url: "/users",
           icon: UserCog,
         },
         {
-          title: 'Blogs',
-          url: '/blogs',
+          title: "Blogs",
+          url: "/blogs",
           icon: Image,
         },
 
         {
-          title: 'FAQ',
-          url: '/faq',
+          title: "FAQ",
+          url: "/faq",
           icon: IconUserQuestion,
         },
         // {
@@ -104,7 +104,7 @@ export const sidebarData: SidebarData = {
     //       title: 'Settings',
     //       icon: IconSettings,
     //       items: [
-          
+
     //         {
     //           title: 'Security',
     //           icon: IconLock,
@@ -112,8 +112,8 @@ export const sidebarData: SidebarData = {
     //         },
     //       ],
     //     },
-      
+
     //   ],
     // },
   ],
-}
+};
