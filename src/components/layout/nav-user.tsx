@@ -23,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { toast } from 'sonner'
 
 export function NavUser({
   user,
@@ -100,7 +101,8 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
-                console.log('Logged out')
+                toast.info('Logged out successfully !!')
+                // console.log("Logged out successfully!!");
 
                 // logoutMutation.mutate()
                 // Navigation is handled by the logout hook

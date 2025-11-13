@@ -1,10 +1,15 @@
 import React from 'react'
+import ContentSection from '../components/content-section'
+import { NotificationsForm } from './notifications-form'
 
 function SettingsNotifications() {
   return (
-    <>
-      <div className='bg-amber-300 mt-20'>SettingsNotifications</div>
-    </>
+    <ContentSection
+      title='Notifications'
+      desc='Configure how you receive notifications.'
+    >
+      <NotificationsForm />
+    </ContentSection>
   )
 }
 
