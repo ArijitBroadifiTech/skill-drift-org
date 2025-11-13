@@ -1,9 +1,7 @@
+import BlogsPage from '@/features/blogs';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_authenticated/blogs/')({
-  component: RouteComponent,
+  component: BlogsPage
 });
 
-function RouteComponent() {
-  return <div>Hello "/_authenticated/blogs/"!</div>;
-}

@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Dashboard() {
+function BlogsPage() {
   return (
     <>
       <div className='bg-amber-300 mt-20'>
-          <p>Dashboard</p>
+          <p>BlogsPage</p>
       </div>
     </>
   )
 }
 
-export default Dashboard
+export default BlogsPage

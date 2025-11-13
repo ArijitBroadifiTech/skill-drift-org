@@ -1,75 +1,41 @@
-import { Home, Settings, Users, Image, MessageCircle } from 'lucide-react';
-import { IconUserQuestion } from '@tabler/icons-react';
-
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from '@/components/ui/sidebar';
+  SidebarFooter,
+  SidebarHeader,
+  SidebarRail,
+} from '@/components/ui/sidebar'
+import { NavGroup } from '@/components/layout/nav-group'
+import { NavUser } from '@/components/layout/nav-user'
+import { TeamSwitcher } from '@/components/layout/team-switcher'
+import { sidebarData } from '../data/sidebar-data'
 
-// Menu items.
-const items = [
-  {
-    title: 'Dashboard',
-    url: '/',
-    icon: Home,
-  },
-  {
-    title: 'Users',
-    url: '/users',
-    icon: Users,
-  },
-  {
-    title: 'Blogs',
-    url: '/blogs',
-    icon: Image,
-  },
-  {
-    title: 'Chats',
-    url: '/chats',
-    icon: MessageCircle,
-  },
-  {
-    title: 'FAQ',
-    url: '/faq',
-    icon: IconUserQuestion,
-  },
-  {
-    title: 'Settings',
-    url: '/settings',
-    icon: Settings,
-  },
-];
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const  user  = {
+    name: 'Skill Drift',
+    email: 'skilldrift@gmail.com'
+  }
+
+  const userData = {
+    name: user?.name || 'Guest',
+    email: user?.email || 'not provided',
+    avatar: '/avatars/shadcn.jpg', // Fallback avatar
+  }
   return (
-    <Sidebar>
+    <Sidebar collapsible='icon' variant='floating' {...props}>
+      <SidebarHeader>
+        <TeamSwitcher teams={sidebarData.teams} />
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className='text-lg text-blue-700 font-bold'>
-            Skill Drift Administration
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map(item => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {sidebarData.navGroups.map((props) => (
+          <NavGroup key={props.title} {...props} />
+        ))}
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={userData} />
+      </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
-  );
+  )
 }

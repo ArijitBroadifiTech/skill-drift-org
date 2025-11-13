@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Dashboard() {
+function SettingsProfile() {
   return (
     <>
       <div className='bg-amber-300 mt-20'>
-          <p>Dashboard</p>
+          <p>SettingsProfile</p>
       </div>
     </>
   )
 }
 
-export default Dashboard
+export default SettingsProfile

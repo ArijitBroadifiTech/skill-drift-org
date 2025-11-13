@@ -11,11 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedFaqIndexRouteImport } from './routes/_authenticated/faq/index'
 import { Route as AuthenticatedChatsIndexRouteImport } from './routes/_authenticated/chats/index'
 import { Route as AuthenticatedBlogsIndexRouteImport } from './routes/_authenticated/blogs/index'
+import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
+import { Route as AuthenticatedSettingsAccountIndexRouteImport } from './routes/_authenticated/settings/account/index'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -26,6 +29,12 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSettingsRouteRoute =
+  AuthenticatedSettingsRouteRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
@@ -33,9 +42,9 @@ const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
 } as any)
 const AuthenticatedSettingsIndexRoute =
   AuthenticatedSettingsIndexRouteImport.update({
-    id: '/settings/',
-    path: '/settings/',
-    getParentRoute: () => AuthenticatedRouteRoute,
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
 const AuthenticatedFaqIndexRoute = AuthenticatedFaqIndexRouteImport.update({
   id: '/faq/',
@@ -52,47 +61,87 @@ const AuthenticatedBlogsIndexRoute = AuthenticatedBlogsIndexRouteImport.update({
   path: '/blogs/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSettingsNotificationsRoute =
+  AuthenticatedSettingsNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
+const AuthenticatedSettingsAccountIndexRoute =
+  AuthenticatedSettingsAccountIndexRouteImport.update({
+    id: '/account/',
+    path: '/account/',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
+  '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/': typeof AuthenticatedIndexRoute
+  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/blogs': typeof AuthenticatedBlogsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
   '/faq': typeof AuthenticatedFaqIndexRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/settings/': typeof AuthenticatedSettingsIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/settings/account': typeof AuthenticatedSettingsAccountIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof AuthenticatedIndexRoute
+  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/blogs': typeof AuthenticatedBlogsIndexRoute
   '/chats': typeof AuthenticatedChatsIndexRoute
   '/faq': typeof AuthenticatedFaqIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
   '/users': typeof AuthenticatedUsersIndexRoute
+  '/settings/account': typeof AuthenticatedSettingsAccountIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/blogs/': typeof AuthenticatedBlogsIndexRoute
   '/_authenticated/chats/': typeof AuthenticatedChatsIndexRoute
   '/_authenticated/faq/': typeof AuthenticatedFaqIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
   '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_authenticated/settings/account/': typeof AuthenticatedSettingsAccountIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs' | '/chats' | '/faq' | '/settings' | '/users'
+  fullPaths:
+    | '/settings'
+    | '/'
+    | '/settings/notifications'
+    | '/blogs'
+    | '/chats'
+    | '/faq'
+    | '/settings/'
+    | '/users'
+    | '/settings/account'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs' | '/chats' | '/faq' | '/settings' | '/users'
+  to:
+    | '/'
+    | '/settings/notifications'
+    | '/blogs'
+    | '/chats'
+    | '/faq'
+    | '/settings'
+    | '/users'
+    | '/settings/account'
   id:
     | '__root__'
     | '/_authenticated'
+    | '/_authenticated/settings'
     | '/_authenticated/'
+    | '/_authenticated/settings/notifications'
     | '/_authenticated/blogs/'
     | '/_authenticated/chats/'
     | '/_authenticated/faq/'
     | '/_authenticated/settings/'
     | '/_authenticated/users/'
+    | '/_authenticated/settings/account/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -115,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/users/': {
       id: '/_authenticated/users/'
       path: '/users'
@@ -124,10 +180,10 @@ declare module '@tanstack/react-router' {
     }
     '/_authenticated/settings/': {
       id: '/_authenticated/settings/'
-      path: '/settings'
-      fullPath: '/settings'
+      path: '/'
+      fullPath: '/settings/'
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
     '/_authenticated/faq/': {
       id: '/_authenticated/faq/'
@@ -150,24 +206,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBlogsIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/settings/notifications': {
+      id: '/_authenticated/settings/notifications'
+      path: '/notifications'
+      fullPath: '/settings/notifications'
+      preLoaderRoute: typeof AuthenticatedSettingsNotificationsRouteImport
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
+    '/_authenticated/settings/account/': {
+      id: '/_authenticated/settings/account/'
+      path: '/account'
+      fullPath: '/settings/account'
+      preLoaderRoute: typeof AuthenticatedSettingsAccountIndexRouteImport
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
   }
 }
 
+interface AuthenticatedSettingsRouteRouteChildren {
+  AuthenticatedSettingsNotificationsRoute: typeof AuthenticatedSettingsNotificationsRoute
+  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
+  AuthenticatedSettingsAccountIndexRoute: typeof AuthenticatedSettingsAccountIndexRoute
+}
+
+const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteChildren =
+  {
+    AuthenticatedSettingsNotificationsRoute:
+      AuthenticatedSettingsNotificationsRoute,
+    AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
+    AuthenticatedSettingsAccountIndexRoute:
+      AuthenticatedSettingsAccountIndexRoute,
+  }
+
+const AuthenticatedSettingsRouteRouteWithChildren =
+  AuthenticatedSettingsRouteRoute._addFileChildren(
+    AuthenticatedSettingsRouteRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedBlogsIndexRoute: typeof AuthenticatedBlogsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
   AuthenticatedFaqIndexRoute: typeof AuthenticatedFaqIndexRoute
-  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedBlogsIndexRoute: AuthenticatedBlogsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
   AuthenticatedFaqIndexRoute: AuthenticatedFaqIndexRoute,
-  AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
 }
 

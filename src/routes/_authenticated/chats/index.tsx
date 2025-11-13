@@ -1,9 +1,7 @@
+import Chats from '@/features/chats';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_authenticated/chats/')({
-  component: RouteComponent,
+  component: Chats
 });
 
-function RouteComponent() {
-  return <div>Hello "/_authenticated/chats/"!</div>;
-}

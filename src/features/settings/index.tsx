@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Dashboard() {
+function Settings() {
   return (
-    <>
+     <>
       <div className='bg-amber-300 mt-20'>
-          <p>Dashboard</p>
+          <p>Settings</p>
       </div>
     </>
   )
 }
 
-export default Dashboard
+export default Settings
