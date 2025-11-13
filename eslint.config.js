@@ -22,12 +22,12 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      'prettier/prettier': 'warn',
+      'react-refresh/only-export-components': 'off', // Disabled to allow mixed exports
+      'prettier/prettier': 'off', // Let Prettier handle formatting separately
       ...prettierConfig.rules,
+      // Disable semicolon rules completely
+      semi: 'off',
+      '@typescript-eslint/semi': 'off',
     },
   }
 )
