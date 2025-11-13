@@ -34,7 +34,7 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
-//   const logoutMutation = useLogout()
+  //   const logoutMutation = useLogout()
 
   return (
     <SidebarMenu>
@@ -89,7 +89,7 @@ export function NavUser({
                   Account
                 </Link>
               </DropdownMenuItem>
-              
+
               <DropdownMenuItem asChild>
                 <Link to='/settings/notifications'>
                   <Bell />
@@ -100,8 +100,8 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
-                console.log('Logged out');
-                
+                console.log('Logged out')
+
                 // logoutMutation.mutate()
                 // Navigation is handled by the logout hook
               }}

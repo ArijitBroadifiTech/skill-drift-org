@@ -1,7 +1,6 @@
-import Chats from '@/features/chats';
-import { createFileRoute } from '@tanstack/react-router';
+import Chats from '@/features/chats'
+import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_authenticated/chats/')({
-  component: Chats
-});
-
+  component: Chats,
+})

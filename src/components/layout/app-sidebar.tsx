@@ -10,11 +10,10 @@ import { NavUser } from '@/components/layout/nav-user'
 import { TeamSwitcher } from '@/components/layout/team-switcher'
 import { sidebarData } from '../data/sidebar-data'
 
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const  user  = {
+  const user = {
     name: 'Skill Drift',
-    email: 'skilldrift@gmail.com'
+    email: 'skilldrift@gmail.com',
   }
 
   const userData = {
@@ -28,7 +27,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={sidebarData.teams} />
       </SidebarHeader>
       <SidebarContent>
-        {sidebarData.navGroups.map((props) => (
+        {sidebarData.navGroups.map(props => (
           <NavGroup key={props.title} {...props} />
         ))}
       </SidebarContent>

@@ -2,36 +2,36 @@ import {
   IconLayoutDashboard,
   IconUsers,
   IconUserQuestion,
-} from "@tabler/icons-react";
+} from '@tabler/icons-react'
 
-import { Command, Image, MessageCircle  } from "lucide-react";
-import type { SidebarData } from "../layout/types";
+import { Command, Image, MessageCircle } from 'lucide-react'
+import type { SidebarData } from '../layout/types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: "satnaing",
-    email: "satnaingdev@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: 'satnaing',
+    email: 'satnaingdev@gmail.com',
+    avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: "Admin Pannel",
+      name: 'Admin Pannel',
       logo: Command,
-      plan: "Skill Drift",
+      plan: 'Skill Drift',
     },
   ],
   navGroups: [
     {
-      title: "General",
+      title: 'General',
       items: [
         {
-          title: "Dashboard",
-          url: "/",
+          title: 'Dashboard',
+          url: '/',
           icon: IconLayoutDashboard,
         },
         {
-          title: "Users",
-          url: "/users",
+          title: 'Users',
+          url: '/users',
           icon: IconUsers,
         },
         {
@@ -71,4 +71,4 @@ export const sidebarData: SidebarData = {
     //   ],
     // },
   ],
-};
+}
