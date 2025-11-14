@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
 import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
@@ -28,6 +29,11 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/(auth)/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedSettingsRouteRoute =
   AuthenticatedSettingsRouteRouteImport.update({
@@ -76,6 +82,7 @@ const AuthenticatedSettingsAccountIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/sign-in': typeof authSignInRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/blogs': typeof AuthenticatedBlogsIndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/settings/account': typeof AuthenticatedSettingsAccountIndexRoute
 }
 export interface FileRoutesByTo {
+  '/sign-in': typeof authSignInRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/blogs': typeof AuthenticatedBlogsIndexRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/(auth)/sign-in': typeof authSignInRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/blogs/': typeof AuthenticatedBlogsIndexRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/settings'
+    | '/sign-in'
     | '/'
     | '/settings/notifications'
     | '/blogs'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/settings/account'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/sign-in'
     | '/'
     | '/settings/notifications'
     | '/blogs'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_authenticated'
     | '/_authenticated/settings'
+    | '/(auth)/sign-in'
     | '/_authenticated/'
     | '/_authenticated/settings/notifications'
     | '/_authenticated/blogs/'
@@ -146,6 +158,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  authSignInRoute: typeof authSignInRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -163,6 +176,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/settings': {
       id: '/_authenticated/settings'
@@ -240,7 +260,7 @@ const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteCh
 
 const AuthenticatedSettingsRouteRouteWithChildren =
   AuthenticatedSettingsRouteRoute._addFileChildren(
-    AuthenticatedSettingsRouteRouteChildren,
+    AuthenticatedSettingsRouteRouteChildren
   )
 
 interface AuthenticatedRouteRouteChildren {
@@ -266,6 +286,7 @@ const AuthenticatedRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  authSignInRoute: authSignInRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
