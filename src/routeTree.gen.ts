@@ -260,7 +260,7 @@ const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteCh
 
 const AuthenticatedSettingsRouteRouteWithChildren =
   AuthenticatedSettingsRouteRoute._addFileChildren(
-    AuthenticatedSettingsRouteRouteChildren
+    AuthenticatedSettingsRouteRouteChildren,
   )
 
 interface AuthenticatedRouteRouteChildren {
