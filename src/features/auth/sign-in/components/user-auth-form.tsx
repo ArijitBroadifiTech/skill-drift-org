@@ -84,7 +84,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='name@example.com' {...field} />
+                <Input
+                  placeholder='name@example.com'
+                  {...field}
+                  className='relative z-10'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -97,7 +101,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             <FormItem className='relative'>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <PasswordInput placeholder='********' {...field} />
+                <PasswordInput
+                  placeholder='********'
+                  {...field}
+                  className='relative z-10'
+                />
               </FormControl>
               <FormMessage />
               {/* <Link
