@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
@@ -60,7 +61,7 @@ export const BackgroundBeams = React.memo(
     return (
       <div
         className={cn(
-          'absolute inset-0 flex h-full w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
+          'absolute inset-0 flex h-full w-full items-center justify-center [mask-size:40px] [mask-repeat:no-repeat]',
           className
         )}
       >
@@ -89,7 +90,7 @@ export const BackgroundBeams = React.memo(
             ></motion.path>
           ))}
           <defs>
-            {paths.map((path, index) => (
+            {paths.map((_, index) => (
               <motion.linearGradient
                 id={`linearGradient-${index}`}
                 key={`gradient-${index}`}

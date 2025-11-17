@@ -1,7 +1,7 @@
-import { Main } from '@/components/layout/main'
-import { Separator } from '@/components/ui/separator'
-import { Outlet } from '@tanstack/react-router'
 import React from 'react'
+import { Outlet } from '@tanstack/react-router'
+import { Separator } from '@/components/ui/separator'
+import { Main } from '@/components/layout/main'
 
 function Settings() {
   return (

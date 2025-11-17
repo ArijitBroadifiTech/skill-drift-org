@@ -6,6 +6,7 @@ import {
   LogOut,
   Sparkles,
 } from 'lucide-react'
+import { toast } from 'sonner'
 // import { useLogout } from '@/hooks/use-auth'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -23,7 +24,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
-import { toast } from 'sonner'
 
 export function NavUser({
   user,

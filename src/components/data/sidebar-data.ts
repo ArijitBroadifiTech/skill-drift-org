@@ -1,9 +1,8 @@
 import {
   IconLayoutDashboard,
-  IconUsers,
   IconUserQuestion,
+  IconUsers,
 } from '@tabler/icons-react'
-
 import { Command, Image, MessageCircle } from 'lucide-react'
 import type { SidebarData } from '../layout/types'
 

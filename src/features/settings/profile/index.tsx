@@ -3,7 +3,7 @@ import React from 'react'
 function SettingsProfile() {
   return (
     <>
-      <div className='bg-amber-300 mt-20'>
+      <div className='mt-20 bg-amber-300'>
         <p>SettingsProfile</p>
       </div>
     </>

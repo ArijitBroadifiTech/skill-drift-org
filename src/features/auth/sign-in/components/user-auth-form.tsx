@@ -24,7 +24,7 @@ type UserAuthFormProps = HTMLAttributes<HTMLFormElement>
 
 const formSchema = z.object({
   email: z.email({
-    error: iss => (iss.input === '' ? 'Please enter your email' : undefined),
+    error: (iss) => (iss.input === '' ? 'Please enter your email' : undefined),
   }),
   password: z
     .string()

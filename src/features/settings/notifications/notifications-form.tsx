@@ -19,7 +19,7 @@ import { Switch } from '@/components/ui/switch'
 
 const notificationsFormSchema = z.object({
   type: z.enum(['all', 'mentions', 'none'], {
-    error: iss =>
+    error: (iss) =>
       iss.input === undefined
         ? 'Please select a notification type.'
         : undefined,
@@ -50,7 +50,8 @@ export function NotificationsForm() {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(data => showSubmittedData(data))}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onSubmit={form.handleSubmit((data) => showSubmittedData(data))}
         className='space-y-8'
       >
         <FormField

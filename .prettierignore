@@ -1,17 +1,18 @@
-# Dependencies
-node_modules
-package-lock.json
+# Ignore everything
+/*
 
-# Build outputs
-build
-dist
-.next
-coverage
+# Except these files & folders
+!/src
+!index.html
+!package.json
+!tailwind.config.js
+!tsconfig.json
+!tsconfig.node.json
+!vite.config.ts
+!.prettierrc
+!README.md
+!eslint.config.js
+!postcss.config.js
 
-# Environment files
-.env
-.env.local
-
-# Misc
-.DS_Store
-*.log
+# Ignore auto generated routeTree.gen.ts
+/src/routeTree.gen.ts

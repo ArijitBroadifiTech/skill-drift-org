@@ -17,6 +17,12 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import {
+  type NavCollapsible,
+  type NavGroup,
+  type NavItem,
+  type NavLink,
+} from '@/components/layout/types'
 import { Badge } from '../ui/badge'
 import {
   DropdownMenu,
@@ -26,21 +32,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import {
-  type NavItem,
-  type NavCollapsible,
-  type NavGroup,
-  type NavLink,
-} from '@/components/layout/types'
 
 export function NavGroup({ title, items }: NavGroup) {
   const { state, isMobile } = useSidebar()
-  const href = useLocation({ select: location => location.href })
+  const href = useLocation({ select: (location) => location.href })
   return (
     <SidebarGroup>
       <SidebarGroupLabel>{title}</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map(item => {
+        {items.map((item) => {
           const key = `${item.title}-${item.url}`
 
           if (!item.items)
@@ -106,7 +106,7 @@ const SidebarMenuCollapsible = ({
         </CollapsibleTrigger>
         <CollapsibleContent className='CollapsibleContent'>
           <SidebarMenuSub>
-            {item.items.map(subItem => (
+            {item.items.map((subItem) => (
               <SidebarMenuSubItem key={subItem.title}>
                 <SidebarMenuSubButton
                   asChild
@@ -153,7 +153,7 @@ const SidebarMenuCollapsedDropdown = ({
             {item.title} {item.badge ? `(${item.badge})` : ''}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {item.items.map(sub => (
+          {item.items.map((sub) => (
             <DropdownMenuItem key={`${sub.title}-${sub.url}`} asChild>
               <Link
                 to={sub.url}
@@ -177,7 +177,7 @@ function checkIsActive(href: string, item: NavItem, mainNav = false) {
   return (
     href === item.url || // /endpint?search=param
     href.split('?')[0] === item.url || // endpoint
-    !!item?.items?.filter(i => i.url === href).length || // if child nav is active
+    !!item?.items?.filter((i) => i.url === href).length || // if child nav is active
     (mainNav &&
       href.split('/')[1] !== '' &&
       href.split('/')[1] === item?.url?.split('/')[1])

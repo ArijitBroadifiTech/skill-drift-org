@@ -99,10 +99,6 @@ export default function AuthLayout({ children }: Props) {
         setTimeout(initializeHeader, 100)
       }
 
-      script.onerror = () => {
-        console.error('Failed to load finisher-header script')
-      }
-
       document.body.appendChild(script)
     }
 
@@ -111,7 +107,7 @@ export default function AuthLayout({ children }: Props) {
       finisherInstanceRef.current = null
       // Remove all canvas elements created by FinisherHeader
       const canvases = document.querySelectorAll('.finisher-header canvas')
-      canvases.forEach(canvas => canvas.remove())
+      canvases.forEach((canvas) => canvas.remove())
     }
   }, [])
 
@@ -129,7 +125,7 @@ export default function AuthLayout({ children }: Props) {
       />
 
       {/* Content Container */}
-      <div className='container relative z-10 grid h-svh max-w-none items-center justify-center'>
+      <div className='relative z-10 container grid h-svh max-w-none items-center justify-center'>
         <div className='mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8'>
           <div className='mb-4 flex items-center justify-center gap-2'>
             <img src='/images/newFavicon.png' alt='logo' className='w-5' />
